@@ -63,5 +63,3 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci
 
 # SmartDNS
 svn co https://github.com/pirately/packages/trunk/SmartDNS package/smartdns
-
-./scripts/feeds update -a && ./scripts/feeds install -a
