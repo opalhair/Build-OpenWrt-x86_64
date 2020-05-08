@@ -10,8 +10,6 @@
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
-# Modify Default Password
-sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:$1$UmLoGX73$uH5R9TCJBsV.9s9B2twB91:0:0:99999:7:::/g' package/lean/default-settings/files/zzz-default-settings
 
 echo 'Custom settings'
 sed -i '$i uci set network.lan.ifname="eth1 eth2 eth3"' package/lean/default-settings/files/zzz-default-settings
