@@ -19,7 +19,7 @@ svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-
 
 # Passwall
 mkdir -p package/passwall
-svn co https://github.com/pirately/packages/trunk/Passwall/luci-app-passwall package/luci-app-passwall
+svn co https://github.com/opalhair/packages/trunk/Passwall/luci-app-passwall package/luci-app-passwall
 svn co https://github.com/Lienol/openwrt-package/trunk/package/chinadns-ng package/passwall/chinadns-ng
 svn co https://github.com/Lienol/openwrt-package/trunk/package/simple-obfs package/passwall/simple-obfs
 svn co https://github.com/Lienol/openwrt-package/trunk/package/tcping package/passwall/tcping
