@@ -17,5 +17,3 @@ sed -i '$i uci set network.wan.ifname="eth0"' package/lean/default-settings/file
 sed -i '$i uci set network.wan.proto=pppoe' package/lean/default-settings/files/zzz-default-settings
 sed -i '$i uci set network.wan6.ifname="eth0"' package/lean/default-settings/files/zzz-default-settings
 sed -i '$i uci commit network' package/lean/default-settings/files/zzz-default-settings
-
-sed -i 's/R20.4.8/R20.5.1/g' package/lean/default-settings/files/zzz-default-settings
