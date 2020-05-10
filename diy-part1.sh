@@ -17,6 +17,9 @@
 # SSR-Plus
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 
+# advancedsetting
+svn co https://github.com/opalhair/openwrt-packages/trunk/luci-app-advancedsetting package/luci-app-advancedsetting
+
 # Passwall
 mkdir -p package/passwall
 svn co https://github.com/opalhair/packages/trunk/Passwall/luci-app-passwall package/luci-app-passwall
