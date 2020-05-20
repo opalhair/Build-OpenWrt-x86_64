@@ -74,4 +74,3 @@ sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/roo
 # uci-app-dockerman
 git clone https://github.com/lisaac/luci-lib-docker.git package/luci-lib-docker
 git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman
-mkdir -p package/parted && cp -i package/luci-app-diskman/Parted.Makefile package/parted/Makefile
