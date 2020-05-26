@@ -9,16 +9,25 @@
 #=============================================================
 
 # Uncomment a feed source
-sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+# sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
 # SSR-Plus
-# svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
+svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 
 # advancedsetting (方便上海电信IPTV用户在dnsmasq界面中输入数据，SSH 路由器也有同样效果。）
 svn co https://github.com/opalhair/openwrt-packages/trunk/luci-app-advancedsetting package/luci-app-advancedsetting
+
+# koolproxyR
+# git clone https://github.com/tzxiaozhen88/koolproxyR package/koolproxyR
+
+# rclone
+git clone https://github.com/ElonH/Rclone-OpenWrt package/rclone
+
+# clash
+# git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
 
 # Passwall
 mkdir -p package/passwall
