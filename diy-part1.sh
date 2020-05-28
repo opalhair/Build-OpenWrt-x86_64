@@ -23,8 +23,14 @@ svn co https://github.com/opalhair/openwrt-packages/trunk/luci-app-advancedsetti
 # koolproxyR
 # git clone https://github.com/tzxiaozhen88/koolproxyR package/koolproxyR
 
-# rclone
-git clone https://github.com/ElonH/Rclone-OpenWrt package/rclone
+# rClone
+rm -rf package/lean/luci-app-rclone
+rm -rf package/lean/rclone-webui-react
+rm -rf package/lean/rclone
+mkdir -p package/Rclone-OpenWrt
+svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/luci-app-rclone package/Rclone-OpenWrt/luci-app-rclone
+svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone-webui-react package/Rclone-OpenWrt/rclone-webui-react
+svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone package/Rclone-OpenWrt/rclone
 
 # clash
 # git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
