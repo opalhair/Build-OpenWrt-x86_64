@@ -14,7 +14,7 @@ on:
     types: published
   push:
     branches:
-      - master
+      - lede-17.01
     paths:
       - '.config'
 #  schedule:
@@ -23,7 +23,7 @@ on:
     types: started
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/coolsnowwolf/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
