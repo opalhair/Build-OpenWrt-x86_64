@@ -37,10 +37,10 @@ svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone package/Rclone-OpenW
 
 # Passwall
 mkdir -p package/passwall
-svn co https://github.com/opalhair/packages/trunk/Passwall/luci-app-passwall package/luci-app-passwall
-svn co https://github.com/Lienol/openwrt-package/trunk/package/chinadns-ng package/passwall/chinadns-ng
-svn co https://github.com/Lienol/openwrt-package/trunk/package/simple-obfs package/passwall/simple-obfs
-svn co https://github.com/Lienol/openwrt-package/trunk/package/tcping package/passwall/tcping
+svn co https://github.com/xiaorouji/packages/trunk/Passwall/luci-app-passwall package/luci-app-passwall
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/chinadns-ng package/passwall/chinadns-ng
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/simple-obfs package/passwall/simple-obfs
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/tcping package/passwall/tcping
 
 #更改Passwall国内的dns
 passwall_dns=$(grep -o "option up_china_dns 'default'" package/luci-app-passwall/root/etc/config/passwall | wc -l)
@@ -87,7 +87,7 @@ git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/SmartD
 sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
 
 # uci-app-dockerman
-mkdir -p package/luci-lib-docker && \
-wget https://raw.githubusercontent.com/lisaac/luci-lib-docker/master/Makefile -O package/luci-lib-docker/Makefile
-mkdir -p package/luci-app-dockerman && \
-wget https://raw.githubusercontent.com/lisaac/luci-app-dockerman/master/Makefile -O package/luci-app-dockerman/Makefile
+# mkdir -p package/luci-lib-docker && \
+# wget https://raw.githubusercontent.com/lisaac/luci-lib-docker/master/Makefile -O package/luci-lib-docker/Makefile
+# mkdir -p package/luci-app-dockerman && \
+# wget https://raw.githubusercontent.com/lisaac/luci-app-dockerman/master/Makefile -O package/luci-app-dockerman/Makefile
