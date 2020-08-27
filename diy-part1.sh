@@ -74,7 +74,7 @@ sed -i "s/vpn/services/g" package/luci-app-passwall/luasrc/view/passwall/rule/kc
 sed -i "s/vpn/services/g" package/luci-app-passwall/luasrc/view/passwall/rule/passwall_version.htm
 
 # OpenClash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+svn co https://github.com/vernesong/OpenClash/branches/master/luci-app-openclash package/luci-app-openclash
 
 # AdguardHome
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
