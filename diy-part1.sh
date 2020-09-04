@@ -37,7 +37,7 @@ svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone package/Rclone-OpenW
 
 # Passwall
 mkdir -p package/passwall
-svn co https://github.com/xiaorouji/packages/trunk/Passwall/luci-app-passwall package/luci-app-passwall
+svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-app-passwall package/luci-app-passwall
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package/chinadns-ng package/passwall/chinadns-ng
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package/simple-obfs package/passwall/simple-obfs
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package/tcping package/passwall/tcping
