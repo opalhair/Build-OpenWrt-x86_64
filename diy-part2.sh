@@ -36,23 +36,8 @@ svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone package/Rclone-OpenW
 # git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
 
 # Passwall
-mkdir -p package/passwall
-svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-app-passwall package/luci-app-passwall
-svn co https://github.com/xiaorouji/openwrt-package/trunk/package/chinadns-ng package/passwall/chinadns-ng
-svn co https://github.com/xiaorouji/openwrt-package/trunk/package/simple-obfs package/passwall/simple-obfs
-svn co https://github.com/xiaorouji/openwrt-package/trunk/package/tcping package/passwall/tcping
-
-#更改Passwall国内的dns
-passwall_dns=$(grep -o "option up_china_dns 'default'" package/luci-app-passwall/root/etc/config/passwall | wc -l)
-if [[ "$passwall_dns" == "1" ]]; then
-	sed -i "s/option up_china_dns 'default'/option up_china_dns '223.5.5.5'/g" package/luci-app-passwall/root/etc/config/passwall
-fi
-
-#更改Passwall的dns模式
-dns_mode=$(grep -o "option dns_mode 'pdnsd'" package/luci-app-passwall/root/etc/config/passwall | wc -l)
-if [[ "$dns_mode" == "1" ]]; then
-	sed -i "s/option dns_mode 'pdnsd'/option dns_mode 'chinadns-ng'/g" package/luci-app-passwall/root/etc/config/passwall
-fi
+# Add a feed source
+sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 # OpenClash
 svn co https://github.com/vernesong/OpenClash/branches/master/luci-app-openclash package/luci-app-openclash
 
