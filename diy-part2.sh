@@ -35,9 +35,6 @@ svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone package/Rclone-OpenW
 # clash
 # git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
 
-# Passwall
-# Add a feed source
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 # OpenClash
 svn co https://github.com/vernesong/OpenClash/branches/master/luci-app-openclash package/luci-app-openclash
 
