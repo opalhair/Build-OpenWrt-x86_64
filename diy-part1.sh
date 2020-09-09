@@ -17,6 +17,16 @@
 # SSR-Plus
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 
+#passwall
+sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-app-passwall package/luci-app-passwall
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/brook package/brook
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/chinadns-ng package/chinadns-ng
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/tcping package/tcping
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/trojan-go package/trojan-go
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/trojan-plus package/trojan-plus
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/syncthing package/syncthing
+
 # advancedsetting (方便上海电信IPTV用户在dnsmasq界面中输入数据，SSH 路由器也有同样效果。）
 svn co https://github.com/opalhair/openwrt-packages/trunk/luci-app-advancedsetting package/luci-app-advancedsetting
 
@@ -46,7 +56,7 @@ mkdir -p package/SmartDNS
 git clone https://github.com/pymumu/openwrt-smartdns.git package/SmartDNS/openwrt-smartdns
 git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/SmartDNS/luci-app-smartdns
 
-sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
+# sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
 
 # uci-app-dockerman
 git clone https://github.com/lisaac/luci-app-dockerman.git package/openwrt-packages/luci-app-dockerman
