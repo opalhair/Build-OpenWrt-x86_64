@@ -32,7 +32,6 @@ svn co https://github.com/xiaorouji/openwrt-package/trunk/package/chinadns-ng pa
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package/tcping package/tcping
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package/trojan-go package/trojan-go
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package/trojan-plus package/trojan-plus
-svn co https://github.com/xiaorouji/openwrt-package/trunk/package/syncthing package/syncthing
 
 # AdguardHome
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
