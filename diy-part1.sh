@@ -25,7 +25,6 @@ svn co https://github.com/opalhair/openwrt-packages/trunk/luci-app-advancedsetti
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 
 #passwall
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/brook package/brook
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/chinadns-ng package/chinadns-ng
