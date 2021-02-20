@@ -32,13 +32,13 @@ svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-
 # sed -i '$a src-git kenzo https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 # sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 sed -i '$a src-git small https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/brook package/brook
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/chinadns-ng package/chinadns-ng
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/tcping
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-go package/trojan-go
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-plus package/trojan-plus
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-core package/xray-core
+# svn co https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
+# svn co https://github.com/xiaorouji/openwrt-passwall/trunk/brook package/brook
+# svn co https://github.com/xiaorouji/openwrt-passwall/trunk/chinadns-ng package/chinadns-ng
+# svn co https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/tcping
+# svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-go package/trojan-go
+# svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-plus package/trojan-plus
+# svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-core package/xray-core
 
 # AdguardHome
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
