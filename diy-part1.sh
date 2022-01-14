@@ -55,6 +55,7 @@ git clone https://github.com/lisaac/luci-app-dockerman.git package/openwrt-packa
 # svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/luci-app-rclone package/Rclone-OpenWrt/luci-app-rclone
 # svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone-webui-react package/Rclone-OpenWrt/rclone-webui-react
 # svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone package/Rclone-OpenWrt/rclone
-
+# OpenClash
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 # svn co https://github.com/openwrt/packages/trunk/net/https-dns-proxy package/openwrt-packages/https-dns-proxy
 # sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
