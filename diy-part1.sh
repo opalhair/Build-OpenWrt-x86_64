@@ -22,8 +22,7 @@
 # Add a feed source
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
-# advancedsetting (方便上海电信IPTV用户在dnsmasq界面中输入数据，SSH 路由器也有同样效果。）
-# svn co https://github.com/opalhair/openwrt-packages/tree/master/luci-app-advancedsetting package/luci-app-advancedsetting
+# advanced (方便上海电信IPTV用户在dnsmasq界面中输入数据，SSH 路由器也有同样效果。）
 svn co https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-advanced package/luci-app-advanced
 
 # SSR-Plus
