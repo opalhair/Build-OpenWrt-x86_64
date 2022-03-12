@@ -29,7 +29,7 @@ svn co https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-advanced
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 
 #passwall
-# sed -i '$a src-git kenzo https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
+sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall2.git' feeds.conf.default
 # sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 sed -i '$a src-git small https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 # svn co https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
