@@ -22,16 +22,14 @@
 # Add a feed source
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
-# advanced (方便上海电信IPTV用户在dnsmasq界面中输入数据，SSH 路由器也有同样效果。）
-svn co https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-advanced package/luci-app-advanced
 
 # SSR-Plus
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
+# svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 
-#passwall
-sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall2.git' feeds.conf.default
+# passwall
+# sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall2.git' feeds.conf.default
 # sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-sed -i '$a src-git small https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+# sed -i '$a src-git small https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 # svn co https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
 # svn co https://github.com/xiaorouji/openwrt-passwall/trunk/brook package/brook
 # svn co https://github.com/xiaorouji/openwrt-passwall/trunk/chinadns-ng package/chinadns-ng
@@ -40,11 +38,14 @@ sed -i '$a src-git small https://github.com/xiaorouji/openwrt-passwall' feeds.co
 # svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-plus package/trojan-plus
 # svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-core package/xray-core
 
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+
 # AdguardHome
-git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
+# git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
 # uci-app-dockerman
-git clone https://github.com/lisaac/luci-app-dockerman.git package/openwrt-packages/luci-app-dockerman
+# git clone https://github.com/lisaac/luci-app-dockerman.git package/openwrt-packages/luci-app-dockerman
 
 # rClone
 # rm -rf package/lean/luci-app-rclone
