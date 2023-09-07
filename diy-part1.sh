@@ -39,7 +39,8 @@
 # svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-core package/xray-core
 
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+# sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+sed -i '$a src-git small8 https://github.com/kenzok8/small-package' feeds.conf.default
 
 # AdguardHome
 # git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
