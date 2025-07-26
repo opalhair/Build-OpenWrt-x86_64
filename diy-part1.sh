@@ -63,5 +63,5 @@ src-git openclash https://github.com/vernesong/OpenClash
 # sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
 # Add a feed source
 # 添加 MosDNS 软件源
-src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5
-src-git golang24 https://github.com/sbwml/packages_lang_golang;24.x
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+
