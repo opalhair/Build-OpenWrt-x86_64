@@ -66,4 +66,4 @@ src-git openclash https://github.com/vernesong/OpenClash
 src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5
 src-git golang24 https://github.com/sbwml/packages_lang_golang;24.x
 # 3. 【新增】手动 Clone GeoData 数据库，让 OpenClash 开箱即用
-git clone https://github.com/sbwml/v2xxxray-geodata.git package/geodata
+src-git geodata https://github.com/sbwml/v2xxxray-geodata
