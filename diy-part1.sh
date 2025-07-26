@@ -57,12 +57,13 @@
 # svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone-webui-react package/Rclone-OpenWrt/rclone-webui-react
 # svn co https://github.com/ElonH/Rclone-OpenWrt/trunk/rclone package/Rclone-OpenWrt/rclone
 # OpenClash
+src-git openclash https://github.com/vernesong/OpenClash
 # svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 # svn co https://github.com/openwrt/packages/trunk/net/https-dns-proxy package/openwrt-packages/https-dns-proxy
 # sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
 # Add a feed source
 # 添加 MosDNS 软件源
-echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns.git' >>feeds.conf.default
-
-# 添加包含 passwall 和 ssr-plus 等插件的 community feed
-echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
+src-git mosdns https://github.com/sbwml/luci-app-mosdns;v5
+src-git golang24 https://github.com/sbwml/packages_lang_golang;24.x
+# 3. 【新增】手动 Clone GeoData 数据库，让 OpenClash 开箱即用
+git clone https://github.com/sbwml/v2xxxray-geodata.git package/geodata
