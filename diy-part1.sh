@@ -61,5 +61,8 @@
 # svn co https://github.com/openwrt/packages/trunk/net/https-dns-proxy package/openwrt-packages/https-dns-proxy
 # sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
 # Add a feed source
-sed -i '$a src-git mosdns https://github.com/sbwml/luci-app-mosdns.git' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+# 添加 MosDNS 软件源
+echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns.git' >>feeds.conf.default
+
+# 添加包含 passwall 和 ssr-plus 等插件的 community feed
+echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
