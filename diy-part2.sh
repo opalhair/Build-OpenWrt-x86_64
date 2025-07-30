@@ -1,8 +1,17 @@
 #!/bin/bash
+set -e
+
 # 修改默认管理 IP
 sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
-sed -i '1i#define BISON_LOCALEDIR "/usr/share/locale"' openwrt/build_dir/hostpkg/gettext-0.24.1/gettext-tools/src/msgcmp.c# 创建自定义 uci-defaults 脚本，设置网口和拨号
+
+# 升级 Golang
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+
+# 创建 uci-defaults 目录
 mkdir -p package/base-files/files/etc/uci-defaults/
+
+# 写入自定义网络脚本
 cat <<EOF > package/base-files/files/etc/uci-defaults/99-custom-network
 uci set network.lan.ifname="eth1 eth2 eth3"
 uci set network.wan.ifname="eth0"
@@ -10,5 +19,5 @@ uci set network.wan.proto=pppoe
 uci set network.wan6.ifname="eth0"
 uci commit network
 EOF
-chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
 
+chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
