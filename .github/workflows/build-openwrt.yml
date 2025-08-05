@@ -94,18 +94,7 @@ jobs:
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
-
-    - name: upgrade Golang
-      run: |
-        rm -rf feeds/packages/lang/golang
-        git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
-
-    - name: upgrade mosdns&geodata
-      run: |
-        rm -rf feeds/packages/net/v2ray-geodata
-        git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-        git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-        
+       
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
       
@@ -161,24 +150,12 @@ jobs:
 
     - name: Organize files
       id: organize
-      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
-      run: |
-        FIRMWARE_DIR=$(find openwrt/bin/targets -type d -mindepth 2 | head -1)
-        if [ -z "$FIRMWARE_DIR" ]; then
-          echo "No firmware directory found!"
-          exit 1
-        fi
-        cd "$FIRMWARE_DIR"
+       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+       run: |
+        cd openwrt/bin/targets/*/*
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
-
-      # if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
-      # run: |
-      #  cd openwrt/bin/targets/*/*
-      #  rm -rf packages
-      #  echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-      #  echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
