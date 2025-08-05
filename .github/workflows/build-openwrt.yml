@@ -95,6 +95,17 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
+    - name: upgrade Golang
+      run: |
+        rm -rf feeds/packages/lang/golang
+        git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+
+    - name: upgrade mosdns&geodata
+      run: |
+        rm -rf feeds/packages/net/v2ray-geodata
+        git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+        git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+        
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
       
