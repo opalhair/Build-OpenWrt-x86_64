@@ -163,10 +163,22 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
-        cd openwrt/bin/targets/*/*
+        FIRMWARE_DIR=$(find openwrt/bin/targets -type d -mindepth 2 | head -1)
+        if [ -z "$FIRMWARE_DIR" ]; then
+          echo "No firmware directory found!"
+          exit 1
+        fi
+        cd "$FIRMWARE_DIR"
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
+
+      # if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+      # run: |
+      #  cd openwrt/bin/targets/*/*
+      #  rm -rf packages
+      #  echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+      #  echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
