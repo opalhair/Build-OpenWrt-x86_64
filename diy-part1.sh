@@ -23,6 +23,12 @@
 # SSR-Plus
 # svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 
+# OpenClash
+src-git openclash https://github.com/vernesong/OpenClash
+# svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+# svn co https://github.com/openwrt/packages/trunk/net/https-dns-proxy package/openwrt-packages/https-dns-proxy
+# sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
+# Add a feed source
 
 
 # sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
@@ -32,12 +38,6 @@
 # AdguardHome
 # git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
-# OpenClash
-src-git openclash https://github.com/vernesong/OpenClash
-# svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
-# svn co https://github.com/openwrt/packages/trunk/net/https-dns-proxy package/openwrt-packages/https-dns-proxy
-# sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
-# Add a feed source
 # 添加 MosDNS 软件源
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 # 替换 Golang
