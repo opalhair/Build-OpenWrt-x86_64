@@ -15,5 +15,11 @@ uci set network.wan.proto=pppoe
 uci set network.wan6.ifname="eth0"
 uci commit network
 EOF
+# 替换 golang 包（适配新版依赖）
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 
+# 替换 v2ray-geodata
+rm -rf feeds/packages/net/v2ray-geodata
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
