@@ -21,5 +21,6 @@ git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/l
 
 # 替换 v2ray-geodata
 rm -rf feeds/packages/net/v2ray-geodata
+find ./ -type f -name "Makefile" | grep v2ray-geodata | xargs rm -f
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
