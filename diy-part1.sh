@@ -39,13 +39,13 @@ src-git openclash https://github.com/vernesong/OpenClash
 # git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
 # 添加 MosDNS 软件源
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+# git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 # 替换 Golang
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 # 替换 v2ray-geodata
-#rm -rf feeds/packages/net/v2ray-geodata
-#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+# rm -rf feeds/packages/net/v2ray-geodata
+# git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # 如需移除不需要的包
 #rm -rf feeds/packages/utils/mqttled
