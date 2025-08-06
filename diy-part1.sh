@@ -42,9 +42,9 @@ src-git openclash https://github.com/vernesong/OpenClash
 # git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
 # 替换 v2ray-geodata
-rm -rf feeds/packages/net/v2ray-geodata
-find ./ -type f -name "Makefile" | grep v2ray-geodata | xargs rm -f
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+# rm -rf feeds/packages/net/v2ray-geodata
+# find ./ -type f -name "Makefile" | grep v2ray-geodata | xargs rm -f
+# git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
