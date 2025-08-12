@@ -2,7 +2,7 @@
 set -e
 
 # 修改默认管理 IP
-sed -i 's/192.168.1.1/192.168.3.5/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
 
 # 创建 uci-defaults 目录
 mkdir -p package/base-files/files/etc/uci-defaults/
