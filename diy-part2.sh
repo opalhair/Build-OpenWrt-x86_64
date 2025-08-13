@@ -22,4 +22,20 @@ git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/l
 rm -rf feeds/packages/net/v2ray-geodata
 find ./ -type f -name "Makefile" | grep v2ray-geodata | xargs rm -f
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+# --- 替换 MosDNS ---
+echo "正在替换为 sbwml v5 版 MosDNS..."
+
+# 1. 精确删除 feeds 中的 mosdns (如果存在)
+# 注意：这里需要知道它在 feeds 里的准确路径
+rm -rf feeds/packages/net/mosdns
+rm -rf feeds/luci/applications/luci-app-mosdns
+
+# 2. 精确删除 install 后的软链接 (更保险)
+rm -rf package/feeds/packages/mosdns
+rm -rf package/feeds/luci/luci-app-mosdns
+
+# 3. 克隆新版本到 package 目录
+git clone https://github.com/sbwml/luci-app-mosdns.git -b v5 package/mosdns
+
+echo "MosDNS 替换完成。"
 chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
