@@ -24,7 +24,7 @@
 # svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/luci-app-ssr-plus
 
 # OpenClash
-src-git openclash https://github.com/vernesong/OpenClash
+# src-git openclash https://github.com/vernesong/OpenClash
 # svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 # svn co https://github.com/openwrt/packages/trunk/net/https-dns-proxy package/openwrt-packages/https-dns-proxy
 # sed -i "s/option bbr '0'/option bbr '1'/g" package/lean/luci-app-flowoffload/root/etc/config/flowoffload
@@ -45,8 +45,9 @@ src-git openclash https://github.com/vernesong/OpenClash
 # rm -rf feeds/packages/net/v2ray-geodata
 # find ./ -type f -name "Makefile" | grep v2ray-geodata | xargs rm -f
 # git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-find ./ | grep Makefile | grep mosdns | xargs rm -f
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+# find ./ | grep Makefile | grep mosdns | xargs rm -f
+# git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns.git;v5' >> feeds.conf.default
 
 # 如需移除不需要的包
 #rm -rf feeds/packages/utils/mqttled
