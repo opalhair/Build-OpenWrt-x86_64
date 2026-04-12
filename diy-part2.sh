@@ -33,8 +33,8 @@ EOF
 chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
 
 # 替换 golang 包（注意：若未来编译在 Go 环节报错，请关注 sbwml 仓库的最新分支号）
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 
 # 替换 v2ray-geodata
 rm -rf feeds/packages/net/v2ray-geodata
