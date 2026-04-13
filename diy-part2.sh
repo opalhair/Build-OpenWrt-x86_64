@@ -3,12 +3,12 @@ set -e
 
 echo "=== 开始精准替换第三方高版本组件 ==="
 
-# 1. 替换高版本 Golang (保障 ddns-go 编译)
+# 1. 替换高版本 Golang
 rm -rf feeds/packages/lang/golang
 rm -rf package/feeds/packages/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x package/golang
 
-# 2. 替换 v5 版 MosDNS (解决 Kconfig 双重定义冲突的核心)
+# 2. 替换 v5 版 MosDNS
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf package/feeds/packages/mosdns
@@ -20,7 +20,11 @@ rm -rf feeds/packages/net/v2ray-geodata
 rm -rf package/feeds/packages/v2ray-geodata
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-echo "=== 组件替换完成，开始系统配置 ==="
+echo "=== 组件替换完成，清理缓存以重建索引 ==="
+# 【核心修复代码】清除编译缓存的“幽灵”，防止 defconfig 产生 syntax error
+rm -rf tmp/
+
+echo "=== 开始系统配置 ==="
 
 # 4. 修改默认管理 IP
 sed -i 's/192.168.1.1/192.168.3.9/g' package/base-files/files/bin/config_generate
