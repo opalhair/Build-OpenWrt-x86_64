@@ -4,9 +4,9 @@ set -e
 echo "=== 开始精准替换第三方高版本组件 ==="
 
 # 1. 替换高版本 Golang
-rm -rf feeds/packages/lang/golang
-rm -rf package/feeds/packages/golang
-git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+# rm -rf feeds/packages/lang/golang
+# rm -rf package/feeds/packages/golang
+# git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 # 2. 替换 v5 版 MosDNS
 rm -rf feeds/packages/net/mosdns
