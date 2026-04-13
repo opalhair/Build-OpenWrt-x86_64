@@ -1,15 +1,31 @@
 #!/bin/bash
 set -e
 
-# 1. 强制覆盖 Golang 环境 (这是解决 ddns-go 报错的核心)
-# 删掉 feeds 里的旧版，把新版克隆到本地 package 文件夹，确保优先级最高
+echo "=== 开始精准替换第三方高版本组件 ==="
+
+# 1. 替换高版本 Golang (保障 ddns-go 编译)
 rm -rf feeds/packages/lang/golang
+rm -rf package/feeds/packages/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x package/golang
 
-# 2. 修改默认管理 IP
+# 2. 替换 v5 版 MosDNS (解决 Kconfig 双重定义冲突的核心)
+rm -rf feeds/packages/net/mosdns
+rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf package/feeds/packages/mosdns
+rm -rf package/feeds/luci/luci-app-mosdns
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+
+# 3. 替换 v2ray-geodata
+rm -rf feeds/packages/net/v2ray-geodata
+rm -rf package/feeds/packages/v2ray-geodata
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+echo "=== 组件替换完成，开始系统配置 ==="
+
+# 4. 修改默认管理 IP
 sed -i 's/192.168.1.1/192.168.3.9/g' package/base-files/files/bin/config_generate
 
-# 3. 现代化网络脚本 (适配 2026 年 DSA 架构，解决 J1900 多网口无法上网)
+# 5. 写入现代化 DSA 网络配置
 mkdir -p package/base-files/files/etc/uci-defaults/
 cat <<EOF > package/base-files/files/etc/uci-defaults/99-custom-network
 uci set network.br_lan=device
@@ -26,9 +42,4 @@ uci set network.wan6.device='eth0'
 
 uci commit network
 EOF
-
-# 4. 替换 v2ray-geodata
-rm -rf feeds/packages/net/v2ray-geodata
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
 chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
