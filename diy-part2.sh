@@ -47,3 +47,12 @@ uci set network.wan6.device='eth0'
 uci commit network
 EOF
 chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
+# 清除默认的 nginx 及其依赖
+sed -i 's/CONFIG_PACKAGE_luci-nginx=y/# CONFIG_PACKAGE_luci-nginx is not set/g' .config
+sed -i 's/CONFIG_PACKAGE_luci-ssl-nginx=y/# CONFIG_PACKAGE_luci-ssl-nginx is not set/g' .config
+sed -i 's/CONFIG_PACKAGE_nginx=y/# CONFIG_PACKAGE_nginx is not set/g' .config
+
+# 强制注入 uHTTPd 核心组件
+echo "CONFIG_PACKAGE_luci=y" >> .config
+echo "CONFIG_PACKAGE_uhttpd=y" >> .config
+echo "CONFIG_PACKAGE_luci-app-uhttpd=y" >> .config
