@@ -1,12 +1,16 @@
 #!/bin/bash
 set -e
 
-echo "=== 开始精准替换第三方高版本组件 ==="
+# ----------------------------
+# 1. 替换新版 golang 包树
+# ----------------------------
+echo "=== Replace golang feed ==="
+rm -rf feeds/packages/lang/golang
+rm -rf package/feeds/packages/golang
+git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
-# 1. 替换高版本 Golang
-# rm -rf feeds/packages/lang/golang
-# rm -rf package/feeds/packages/golang
-# git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+# 重新安装 feeds，确保新的 golang 被正确注册
+./scripts/feeds install -a -f
 
 # 2. 替换 v5 版 MosDNS
 rm -rf feeds/packages/net/mosdns
@@ -30,20 +34,20 @@ echo "=== 开始系统配置 ==="
 sed -i 's/192.168.1.1/192.168.3.9/g' package/base-files/files/bin/config_generate
 
 # 5. 写入现代化 DSA 网络配置
-mkdir -p package/base-files/files/etc/uci-defaults/
-cat <<EOF > package/base-files/files/etc/uci-defaults/99-custom-network
-uci set network.br_lan=device
-uci set network.br_lan.name='br-lan'
-uci set network.br_lan.type='bridge'
-uci add_list network.br_lan.ports='eth1'
-uci add_list network.br_lan.ports='eth2'
-uci add_list network.br_lan.ports='eth3'
+# mkdir -p package/base-files/files/etc/uci-defaults/
+# cat <<EOF > package/base-files/files/etc/uci-defaults/99-custom-network
+# uci set network.br_lan=device
+# uci set network.br_lan.name='br-lan'
+# uci set network.br_lan.type='bridge'
+# uci add_list network.br_lan.ports='eth1'
+# uci add_list network.br_lan.ports='eth2'
+# uci add_list network.br_lan.ports='eth3'
 
-uci set network.lan.device='br-lan'
-uci set network.wan.device='eth0'
-uci set network.wan.proto='pppoe'
-uci set network.wan6.device='eth0'
+# uci set network.lan.device='br-lan'
+# uci set network.wan.device='eth0'
+# uci set network.wan.proto='pppoe'
+# uci set network.wan6.device='eth0'
 
-uci commit network
-EOF
-chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
+# uci commit network
+# EOF
+# chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
