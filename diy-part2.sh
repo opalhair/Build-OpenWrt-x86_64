@@ -2,6 +2,24 @@
 set -e
 
 # ----------------------------
+# 0. 适配外部 Go bootstrap 引擎 (支持云端 Setup-Go 与本地环境)
+# ----------------------------
+if command -v go >/dev/null 2>&1; then
+    GOROOT_PATH="${GOROOT_PATH:-$(go env GOROOT)}"
+fi
+
+if [ -z "${GOROOT_PATH:-}" ] || [ ! -x "${GOROOT_PATH}/bin/go" ]; then
+    echo "ERROR: valid Go bootstrap not found at ${GOROOT_PATH}"
+    echo "Install Go first, or export GOROOT_PATH manually."
+    exit 1
+fi
+
+echo "=== Use external Go bootstrap: ${GOROOT_PATH} ==="
+touch .config
+sed -i '/CONFIG_GOLANG_EXTERNAL_BOOTSTRAP_ROOT=/d' .config || true
+echo "CONFIG_GOLANG_EXTERNAL_BOOTSTRAP_ROOT=\"${GOROOT_PATH}\"" >> .config
+
+# ----------------------------
 # 1. 替换新版 golang 包树
 # ----------------------------
 echo "=== Replace golang feed ==="
