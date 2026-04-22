@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+# ----------------------------
+# 1. 替换新版 golang 包树
+# ----------------------------
+echo "=== Replace golang feed ==="
+rm -rf feeds/packages/lang/golang
+rm -rf package/feeds/packages/golang
+git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
+
 # 2. 替换 v5 版 MosDNS
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/luci/applications/luci-app-mosdns
