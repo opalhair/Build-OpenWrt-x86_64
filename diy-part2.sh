@@ -48,3 +48,5 @@ sed -i 's/192.168.1.1/192.168.3.9/g' package/base-files/files/bin/config_generat
 # uci commit network
 # EOF
 # chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
+# 清除可能存在的残缺 ddns-go 下载缓存
+rm -f dl/ddns-go*.tar.gz 2>/dev/null || true
