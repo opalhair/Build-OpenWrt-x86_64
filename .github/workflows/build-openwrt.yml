@@ -85,6 +85,9 @@ jobs:
       id: package
       run: |
         cd openwrt
+        # 清除可能残缺的 Go 包缓存
+        rm -f dl/ddns-go*.tar.gz
+        rm -rf dl/go-mod-cache
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
