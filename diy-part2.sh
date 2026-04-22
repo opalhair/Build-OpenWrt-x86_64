@@ -8,6 +8,8 @@ echo "=== Replace golang feed ==="
 rm -rf feeds/packages/lang/golang
 rm -rf package/feeds/packages/golang
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
+# ← 这一行是关键，重新注册 golang 到包数据库
+./scripts/feeds install -p packages golang
 
 # 2. 替换 v5 版 MosDNS
 rm -rf feeds/packages/net/mosdns
