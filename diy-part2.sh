@@ -50,3 +50,17 @@ sed -i 's/192.168.1.1/192.168.3.9/g' package/base-files/files/bin/config_generat
 # uci commit network
 # EOF
 # chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
+# 整段用 if 包裹，下载失败只警告，不中断编译
+if curl -L --retry 3 --retry-delay 5 --max-time 60 \
+        -o /tmp/clash-linux-amd64.tar.gz "$CORE_URL"; then
+    tar -xzf /tmp/clash-linux-amd64.tar.gz -C /tmp
+    if [ -f /tmp/clash ]; then          # ← 先确认文件存在
+        cp /tmp/clash package/base-files/files/etc/openclash/core/clash_meta
+        chmod 0755 package/base-files/files/etc/openclash/core/clash_meta
+        echo "=== Meta core injected successfully ==="
+    else
+        echo "WARNING: clash binary not found in tarball, skipping"
+    fi
+else
+    echo "WARNING: Failed to download Meta core, skipping"  # ← 只警告，不 exit 1
+fi
