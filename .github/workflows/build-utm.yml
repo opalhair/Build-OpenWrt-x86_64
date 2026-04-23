@@ -64,7 +64,7 @@ jobs:
       - name: Generate build configuration & Download packages
         working-directory: ./immortalwrt
         run: |
-          rm -f dl/ddns-go*.tar.gz
+          # rm -f dl/ddns-go*.tar.gz
           make defconfig
           make download -j$(nproc)
           find dl -size -1024c -exec rm -f {} \;
