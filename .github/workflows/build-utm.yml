@@ -1,0 +1,83 @@
+name: Build ImmortalWrt for UTM (OrbStack)
+
+on:
+  workflow_dispatch:
+
+env:
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: openwrt-24.10
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 360
+
+    steps:
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
+      - name: Checkout local repository
+        uses: actions/checkout@v4
+
+      - name: Initialize compilation environment
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          sudo -E apt-get update
+          sudo -E apt-get install $(curl -fsSL https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/scripts/mk-ubuntu-docker-build-dependencies.sh)
+          sudo -E apt-get autoremove --purge -y
+          sudo -E apt-get clean
+
+      - name: Clone ImmortalWrt source
+        run: git clone --depth 1 -b $REPO_BRANCH $REPO_URL immortalwrt
+
+      - name: Load custom feeds (diy-part1)
+        run: |
+          [ -f diy-part1.sh ] && chmod +x diy-part1.sh && cd immortalwrt && $GITHUB_WORKSPACE/diy-part1.sh
+
+      - name: Update and Install feeds
+        working-directory: ./immortalwrt
+        run: |
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+
+      - name: Load custom configuration and run diy-part2
+        run: |
+          [ -f .config ] && cp .config immortalwrt/.config
+          [ -f config.txt ] && cp config.txt immortalwrt/.config
+          chmod +x diy-part2.sh
+          cd immortalwrt
+          BUILD_TARGET=UTM DEFAULT_IP=192.168.3.9 IPTV_PROFILE=NONE \
+            REPLACE_GOLANG=1 INJECT_CLASH_META=1 \
+            $GITHUB_WORKSPACE/diy-part2.sh
+
+      - name: Generate build configuration & Download packages
+        working-directory: ./immortalwrt
+        run: |
+          rm -f dl/ddns-go*.tar.gz
+          make defconfig
+          make download -j$(nproc)
+          find dl -size -1024c -exec rm -f {} \;
+
+      - name: Compile the firmware
+        working-directory: ./immortalwrt
+        run: |
+          echo -e "$(nproc) thread compile"
+          make -j$(nproc) || make -j1 || make -j1 V=s
+
+      - name: Upload firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: immortalwrt-utm-${{ github.run_number }}
+          path: immortalwrt/bin/targets/
+          retention-days: 7
