@@ -50,5 +50,18 @@ sed -i 's/192.168.1.1/192.168.3.9/g' package/base-files/files/bin/config_generat
 # uci commit network
 # EOF
 # chmod +x package/base-files/files/etc/uci-defaults/99-custom-network
-# 清除可能存在的残缺 ddns-go 下载缓存
-rm -f dl/ddns-go*.tar.gz 2>/dev/null || true
+# ----------------------------
+# 7. 预置 OpenClash Meta 内核（可选）
+# GitHub 约定：workflow 先把 clash_meta 下载到 ./local-files/clash_meta
+# ----------------------------
+if [ "${INJECT_CLASH_META}" = "1" ]; then
+    echo "=== Injecting OpenClash Meta core if present ==="
+    if [ -f "./local-files/clash_meta" ]; then
+        mkdir -p package/base-files/files/etc/openclash/core
+        cp ./local-files/clash_meta package/base-files/files/etc/openclash/core/clash_meta
+        chmod +x package/base-files/files/etc/openclash/core/clash_meta
+        echo "Meta core injected."
+    else
+        echo "No local Meta core found at ./local-files/clash_meta, skip."
+    fi
+fi
